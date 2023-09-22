@@ -17,3 +17,26 @@ def roll_dice(turns: int = 1) -> list[int]:
     rolls: list[int] = [random.randint(1, 6) for x in range(turns)]
 
     return rolls
+
+
+def main():
+    '''Main game loop'''
+
+    while True:
+        try:
+            # user's input
+            user_input: str = input(
+                'How many times would you like to roll the dice?\n'
+                '(type q to exit):')
+
+            if user_input.lower() == 'q':
+                print('Thanks for playing!')
+                break
+            print('Your numbers are: ')
+            print(*roll_dice(int(user_input)), sep=', ')
+        except ValueError:
+            print('(Please enter a valid number)')
+
+
+if __name__ == '__main__':
+    main()
